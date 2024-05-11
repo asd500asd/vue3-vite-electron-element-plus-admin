@@ -57,7 +57,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       }),
       EslintPlugin({
         cache: false,
-        include: ['src/**/*.vue', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
+        include: ['src/**/*.vue', 'src/**/*.ts', 'src/**/*.tsx', 'electron/**/*.ts'], // 检查的文件
+        fix: true,
       }),
       VueI18nPlugin({
         runtimeOnly: true,

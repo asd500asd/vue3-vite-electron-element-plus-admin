@@ -7,7 +7,7 @@
   "private": false,
   "scripts": {
     "i": "pnpm install",
-    "dev": "vite --mode base",
+    "dev": "chcp 65001 && vite --mode base",
     "ts:check": "vue-tsc --noEmit",
     "build:pro": "vite build --mode pro",
     "build": "vite build",
@@ -23,8 +23,6 @@
     "lint:eslint": "eslint --fix --ext .js,.ts,.vue ./src",
     "lint:format": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,vue,html,md}\"",
     "lint:style": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
-    "lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
-    "prepare": "husky install",
     "p": "plop",
     "analysis": "windicss-analysis",
     "electron": "vite",
@@ -53,7 +51,6 @@
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
-    "vue-draggable-plus": "^0.3.5",
     "pinia-plugin-persistedstate": "^3.2.1",
     "qrcode": "^1.5.1",
     "qs": "^6.12.0",
@@ -61,11 +58,13 @@
     "vite-plugin-electron": "^0.11.1",
     "vite-plugin-electron-renderer": "^0.12.1",
     "vue": "3.4.22",
+    "vue-draggable-plus": "^0.3.5",
     "vue-i18n": "9.10.2",
     "vue-json-pretty": "^2.4.0",
     "vue-router": "^4.3.0",
     "vue-types": "^5.1.1",
-    "xgplayer": "^3.0.14"
+    "xgplayer": "^3.0.14",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
@@ -102,7 +101,6 @@
     "eslint-plugin-vue": "^9.23.0",
     "esno": "^4.7.0",
     "fs-extra": "^11.2.0",
-    "husky": "^9.0.11",
     "inquirer": "^9.2.16",
     "less": "^4.2.0",
     "lint-staged": "^15.2.2",

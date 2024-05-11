@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import type { App } from 'vue'
-import { Layout, getParentLayout } from '@/utils/routerHelper'
+import { Layout, Demo, getParentLayout } from '@/utils/routerHelper'
 import { useI18n } from '@/hooks/web/useI18n'
 import { NO_RESET_WHITE_LIST } from '@/constants'
 
@@ -10,13 +10,21 @@ const { t } = useI18n()
 export const constantRouterMap: AppRouteRecordRaw[] = [
   {
     path: '/',
-    component: Layout,
-    redirect: '/dashboard/analysis',
+    component: Demo,
     name: 'Root',
     meta: {
       hidden: true
     }
   },
+  // {
+  //   path: '/',
+  //   component: Layout,
+  //   redirect: '/dashboard/analysis',
+  //   name: 'Root',
+  //   meta: {
+  //     hidden: true
+  //   }
+  // },
   {
     path: '/redirect',
     component: Layout,

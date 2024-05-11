@@ -61,7 +61,7 @@ function useLoading() {
 }
     `
   const oStyle = document.createElement('style')
-  const oDiv = document.createElement('div')
+  const oDiv =   document.createElement('div')
   oStyle.id = 'app-loading-style'
   oStyle.innerHTML = styleContent
   oDiv.className = 'app-loading-wrap'
@@ -86,5 +86,5 @@ domReady().then(appendLoading)
 window.onmessage = ev => {
   ev.data.payload === 'removeLoading' && removeLoading()
 }
-setTimeout(removeLoading, 4999);
-//setTimeout(removeLoading, 1999)
+// setTimeout(removeLoading, 4999);
+setTimeout(removeLoading, 200)

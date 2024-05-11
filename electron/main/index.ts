@@ -17,6 +17,7 @@ process.env.PUBLIC = app.isPackaged
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'os'
 import { join } from 'path'
+import { ipc } from "./ipc";
 
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith('6.1')) app.disableHardwareAcceleration()
@@ -46,6 +47,7 @@ async function createWindow() {
     icon: join(process.env.PUBLIC, 'favicon.ico'),
     webPreferences: {
       preload,
+      webSecurity: false,
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
       // Consider using contextBridge.exposeInMainWorld
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
@@ -68,6 +70,8 @@ async function createWindow() {
   // Test actively push message to the Electron-Renderer
   win.webContents.on('did-finish-load', () => {
     win?.webContents.send('main-process-message', new Date().toLocaleString())
+    // 在这里处理IPC
+    ipc()
   })
 
   // Make all links open with the browser, not with the application
@@ -141,3 +145,7 @@ ipcMain.on('window-close', function () {
     win.close()
   }
 })
+
+export function send(channel:string,...args:any[]){
+  win?.webContents.send(channel,...args)
+}
